@@ -1,8 +1,11 @@
-import ExpenseItem from "./ExpenseItem"
+import { createExpense, expenseItems } from "./ExpenseItem"
 
 function App() {
   return (
-    <ExpenseItem />
+    <>
+      <h1 styles="color:blue">Expenses</h1>
+      {expenseItems.map(createExpense)}
+    </>
   );
 }
 

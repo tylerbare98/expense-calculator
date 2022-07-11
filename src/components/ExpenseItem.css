@@ -1,12 +1,12 @@
 #date{
     font-size: 20px;
-    padding-right:25px;
+    padding-right:25px; 
     display: inline-block;
 }
 
 #item{
     color: #fff;
-    font-size: 20px;
+    font-size: 20px;   
     font-weight:bolder;
     display: inline-block;
 }
@@ -27,13 +27,13 @@
     border-radius: 10px;
     width: 50%;
     background-color: grey;
-    margin: auto;
+    margin: 10px auto;
     padding: 15px 10px 10px 10px;
     overflow:hidden;
     display: flex;
     justify-content: space-between;
 }
 
-#test{
+#left-container{
     display:inline-block;
 }
