@@ -1,0 +1,39 @@
+#date{
+    font-size: 20px;
+    padding-right:25px;
+    display: inline-block;
+}
+
+#item{
+    color: #fff;
+    font-size: 20px;
+    font-weight:bolder;
+    display: inline-block;
+}
+
+#cost{
+    padding: 5px;
+    border: solid white 1px;
+    background-color: blueviolet;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    max-height:20px;
+    vertical-align: middle;
+    margin: auto 0;
+}
+
+#container{
+    border-radius: 10px;
+    width: 50%;
+    background-color: grey;
+    margin: auto;
+    padding: 15px 10px 10px 10px;
+    overflow:hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+#test{
+    display:inline-block;
+}
