@@ -1,3 +1,7 @@
+.test{
+    background-color:blue;
+}
+
 #date{
     font-size: 20px;
     padding-right:25px; 
@@ -11,21 +15,19 @@
     display: inline-block;
 }
 
-#cost{
+.cost{
     padding: 5px;
     border: solid white 1px;
     background-color: blueviolet;
-    border-radius: 10px;
     color: #fff;
     display: inline-block;
     max-height:20px;
     vertical-align: middle;
-    margin: auto 0;
+    margin: auto 0 auto 15px;
+    
 }
 
-#container{
-    border-radius: 10px;
-    width: 50%;
+.container{
     background-color: grey;
     margin: 10px auto;
     padding: 15px 10px 10px 10px;

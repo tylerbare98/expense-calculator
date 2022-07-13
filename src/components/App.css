@@ -1,0 +1,14 @@
+.outerMostContainer{
+    background-color: white;
+    width: max-content;
+    margin:auto;
+    padding: 10px;
+}
+
+body{
+    background-color: grey;
+}
+
+h1{
+    text-align: center;
+}
