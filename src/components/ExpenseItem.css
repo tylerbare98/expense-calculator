@@ -1,41 +1,68 @@
-.test{
-    background-color:blue;
+.month{
+    font-size:18px
 }
 
-#date{
-    font-size: 20px;
-    padding-right:25px; 
+.year{
+    font-size:13px
+}
+
+.day{
+    font-size:25px;
+    font-weight:bolder;
+}
+
+.date{
+    background-color:rgb(49, 45, 45);
+    color:white;
     display: inline-block;
+    border: solid white 1px;
+    margin-right:15px;
+    text-align:center;
+    width: 100px;
+    height: 65px;
+    padding: 10px 0;
+    display: table-cell
+}
+
+.date-container{
+    display: table-cell;
+    width: 102px;
+    height: 87px;
+    vertical-align: middle;
 }
 
 #item{
     color: #fff;
     font-size: 20px;   
     font-weight:bolder;
-    display: inline-block;
+    word-break: break-word;
+    display: table-cell;
+    padding-left: 15px;
 }
 
 .cost{
-    padding: 5px;
+    padding: 10px;
     border: solid white 1px;
-    background-color: blueviolet;
+    background-color: rgb(102, 26, 173);
     color: #fff;
     display: inline-block;
     max-height:20px;
     vertical-align: middle;
     margin: auto 0 auto 15px;
-    
+    font-size: 20px;
 }
 
 .container{
-    background-color: grey;
+    background-color: rgb(73, 72, 72);
     margin: 10px auto;
     padding: 15px 10px 10px 10px;
     overflow:hidden;
     display: flex;
     justify-content: space-between;
+    
 }
 
 #left-container{
-    display:inline-block;
+    display:table;
+    overflow:hidden;
 }
