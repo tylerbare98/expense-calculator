@@ -1,14 +1,36 @@
 import "./ExpenseForm.css"
 import {useState} from 'react'
 import Card from "./Card";
-import { expenseItems } from "./ExpenseItem"
 
 
 function ExpenseForm(props) {
 
-  //hooks
-  const [items, setItems] = useState(expenseItems);
+  //hooks to control state
+  const [inputs, setInputs] = useState({
+      title: "",  
+      amount: "", 
+      date: ""    
+  }); //empty JSON object of the inputs, initialized to make compiler happy
 
+  //called when the value of input changes. ie) when user types something
+  const changeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value})) //spread operator just writes values in values object, overwriting with the new data
+  }
+
+  //called when user clicks the submit button
+  const submitHandler = (event) => {
+    event.preventDefault(); //prevent lame default html form stuff
+    console.log(inputs);
+    setInputs({
+      title: "",
+      amount: "",
+      date: ""
+    });
+  }
+
+  //<ExpenseForm /> component For user to add expenses
   return (
     <Card className="form-container">
       <form onSubmit={submitHandler} id="myForm">
@@ -16,11 +38,15 @@ function ExpenseForm(props) {
         <div className="form-row">
           <div className="form-section">
             <label>Title</label><br/>
-            <input className="form-inputBox" type="text" name="title"/>
+            <input className="form-inputBox" type="text" name="title" 
+              value={inputs.title} //clears form fields with "two way binding". Reference setInputs in submitHandler func
+              onChange={changeHandler}/> {/*called when the value of input changes*/}
           </div>
           <div className="form-section">
             <label>Amount</label><br/>
-            <input className="form-inputBox" type="number"/>
+            <input className="form-inputBox" type="number" name="amount" 
+              value={inputs.amount} 
+              onChange={changeHandler}/>
           </div>
         </div>
         
@@ -28,7 +54,9 @@ function ExpenseForm(props) {
         <div className="form-row">
           <div className="form-section" >
             <label>Date</label><br/>
-            <input className="form-inputBox" type="date"/>
+            <input className="form-inputBox" type="date" name="date" 
+              value={inputs.date} 
+              onChange={changeHandler}/>
           </div>
           <div className="form-section">
               <input type="submit" value="Add Expense" className="form-button"></input>
@@ -37,40 +65,6 @@ function ExpenseForm(props) {
       </form> 
     </Card>
   )
-
-  //handler for AddExpenseButton
-  function submitHandler(e) {
-    e.preventDefault(); //prevent default form behavior
-
-
-    //sett variable to updat array
-    let utcDate = e.target[2].valueAsDate; //date from DatePicker, whihc is off by a day
-    let date = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000) //fixes timezone so not off by a day
-    //split date into three variables
-    let month = date.toLocaleString('default', { month: 'long' });
-    let year = String(date.getFullYear());
-    let day = String(date.getDate());
-    let item = e.target[0].value;
-    let cost = e.target[1].value;
-    let key = String(expenseItems.length + 1);
-
-    expenseItems.push({
-      key: key,
-      day: day,
-      month: month,
-      year: year,
-      item: item,
-      cost: cost
-    });
-  
-    document.getElementById("myForm").reset();
-
-      console.log(expenseItems);
-
-     setItems(expenseItems);
-  }
 }
-
-
 
 export default ExpenseForm;
