@@ -1,5 +1,4 @@
-import "./Card.css"  //This is implicitly linked
-
+import "./Card.css"  //This is implicitly linked. 
 //Card compnent to add a div with rounded corners. This concept is called "composition".
 function Card(props) {
   //allows Card to take attribute className when it is called to link custom CSS. Card.css is linked implicitly.
