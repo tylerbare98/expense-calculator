@@ -1,24 +1,20 @@
 import "./ExpenseItem.css"
+import DateBox from "./DateBox"
 import Card from "./Card";
 
 //This defined what an <ExpenseItem /> should look like. It uses another compennt <Card /> 
-
 function ExpenseItem(props) {
   return (
     <Card className="container">
       <div id="left-container">
         <div className="date-container">
-          <Card className="date">
-            <div className="month">{props.month}</div>
-            <div className="year">{props.year}</div>
-            <div className="day">{props.day}</div>
-          </Card>
+          <DateBox day={props.day} month={props.month} year={props.year}/>
         </div>
         <div id="item">{props.item}</div>
       </div>
-      <Card 
-        className="cost">{props.cost}
-      </Card>
+      <div className="testing">
+        <Card className="cost"> {props.cost}</Card>
+      </div>  
     </Card>
   )
 }
