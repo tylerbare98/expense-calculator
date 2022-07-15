@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { createExpense, expenseItems } from "./ExpenseItem"
-import Card from "./Card"
 import "./App.css"
+import Card from "./Card"
 import ExpenseForm from "./ExpenseForm";
+import ExpenseFilter from './ExpenseFilter';
 
 //this is the main App
 function App() {
@@ -37,10 +38,10 @@ function App() {
 
   return (
     <>
-      <h1>Expenses</h1>
+      <h1 className="heading">Expenses</h1>
       <ExpenseForm onFormSubmit={formSubmitHandler} name="test"/> {/*Passes handler-function pointer down to the <ExpenseForm> through props, so data can be passed up*/}
       <Card className="outerMostContainer">
-      
+        <ExpenseFilter />
         {expense.map(createExpense)} {/*This is called Array.length times. each time it will return a new <ExpenseItem /> component.*/}
       </Card>
     </>
