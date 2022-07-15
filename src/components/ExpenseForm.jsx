@@ -5,7 +5,7 @@ import Card from "./Card";
 
 function ExpenseForm(props) {
 
-  //hooks to control state
+  //hooks to control state: inputs is one object holding the entered form data
   const [inputs, setInputs] = useState({
       title: "",  
       amount: "", 
@@ -22,12 +22,13 @@ function ExpenseForm(props) {
   //called when user clicks the submit button
   const submitHandler = (event) => {
     event.preventDefault(); //prevent lame default html form stuff
-    console.log(inputs);
+    //console.log(inputs);
     setInputs({
       title: "",
       amount: "",
       date: ""
     });
+    props.onFormSubmit(inputs); //handler-function pointer pfrom parent. Now we pass the inputs up to the parent
   }
 
   //<ExpenseForm /> component For user to add expenses

@@ -5,9 +5,9 @@ import Card from "./Card";
 function DateBox(props) {
   return (
     <Card className="date">
-        <div className="month">{props.month}</div>
-        <div className="year">{props.year}</div>
-        <div className="day">{props.day}</div>
+        <div className="month">{String(props.month)}</div> {/*String method here to catch empty Date object*/}
+        <div className="year">{String(props.year)}</div>
+        <div className="day">{String(props.day)}</div>
     </Card>
   )
 }
