@@ -33,6 +33,8 @@ function ExpenseForm(props) {
 
   //<ExpenseForm /> component For user to add expenses
   return (
+    <>
+    <h1 className="heading">Expenses</h1>
     <Card className="form-container">
       <form onSubmit={submitHandler} id="myForm">
         {/*Row1: Title and Amount*/}
@@ -65,6 +67,7 @@ function ExpenseForm(props) {
         </div>       
       </form> 
     </Card>
+    </>
   )
 }
 
