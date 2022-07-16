@@ -22,7 +22,6 @@ function App() {
   
       //updates teh data variable and the state hook knows to re render the DOM
       setData([
-        ...expenses,
         {
           key: key,
           day: day,
@@ -30,7 +29,8 @@ function App() {
           year: year,
           item: d.title,
           cost: "$" + d.amount
-        }
+        },
+        ...expenses
       ])
   }
 
