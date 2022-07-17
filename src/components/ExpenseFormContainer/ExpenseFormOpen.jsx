@@ -1,9 +1,9 @@
-import "./ExpenseForm.css"
+import "./ExpenseFormOpen.css"
 import {useState} from 'react'
-import Card from "./Card";
+import Card from "../Card";
+import ExpenseButton from "./ExpenseButton";
 
-
-function ExpenseForm(props) {
+function ExpenseFormOpen(props) {
 
   //hooks to control state: inputs is one object holding the entered form data
   const [inputs, setInputs] = useState({
@@ -29,6 +29,11 @@ function ExpenseForm(props) {
       date: ""
     });
     props.onFormSubmit(inputs); //handler-function pointer pfrom parent. Now we pass the inputs up to the parent
+  }
+
+  //notify the parent FormContainer that we want isOpen to be false
+  const clickHandler = () => {
+    props.onButtonClick(false)
   }
 
   //<ExpenseForm /> component For user to add expenses
@@ -62,7 +67,10 @@ function ExpenseForm(props) {
               onChange={changeHandler}/>
           </div>
           <div className="form-section">
-              <input type="submit" value="Add Expense" className="form-button"></input>
+            <ExpenseButton className="form-button" buttonType="button" buttonText="Cancel" 
+                           onButtonClick={clickHandler}
+            />
+            <input type="submit" value="Add Expense" className="form-button"/>
           </div>
         </div>       
       </form> 
@@ -71,4 +79,4 @@ function ExpenseForm(props) {
   )
 }
 
-export default ExpenseForm;
+export default ExpenseFormOpen;

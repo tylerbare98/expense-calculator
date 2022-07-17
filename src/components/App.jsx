@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./App.css"
-import ExpenseForm from "./ExpenseForm";
+import ExpenseFormContainer from './ExpenseFormContainer/ExpenseFormContainer';
 import Expenses from './Expenses';
 
 //this is the main App
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <ExpenseForm onFormSubmit={formSubmitHandler} name="test"/> {/*Passes handler-function pointer down to the <ExpenseForm> through props, so data can be passed up*/}
+      <ExpenseFormContainer onFormSubmit={formSubmitHandler}/>
       <Expenses array={expenses} />
     </>
   );
