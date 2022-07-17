@@ -29,9 +29,12 @@ function ExpenseFormOpen(props) {
       date: ""
     });
     props.onFormSubmit(inputs); //handler-function pointer pfrom parent. Now we pass the inputs up to the parent
+
+    //notify the parent FormContainer that we want isOpen to be false(closes form)
+    props.onButtonClick(false)
   }
 
-  //notify the parent FormContainer that we want isOpen to be false
+  //notify the parent FormContainer that we want isOpen to be false(closes form)
   const clickHandler = () => {
     props.onButtonClick(false)
   }
