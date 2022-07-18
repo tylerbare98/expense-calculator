@@ -1,3 +1,6 @@
+##### To run: 
+gitpod.io/#https://github.com/tylerbare98/expense-calculator
+
 ##### Imperative/Declarative
 Imperative approach is giving step by step instruction on how to get to the end state, while declarative approach is just giving the end result and React does all the steps to get there. 
 
