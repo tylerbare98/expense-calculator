@@ -21,7 +21,6 @@ function ExpenseFormContainer(props) {
     //The button being clicked will send info up the chain to here
     const clickHandler = isOpen => {
         setisFormOpen(isOpen)
-        console.log(isOpen);
     }
 
     //Conditionally render either the closed form or the open form

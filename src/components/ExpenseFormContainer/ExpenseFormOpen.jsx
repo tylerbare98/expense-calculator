@@ -2,10 +2,12 @@ import "./ExpenseFormOpen.css"
 import {useState} from 'react'
 import Card from "../Card";
 import ExpenseButton from "./ExpenseButton";
+import ErrorModal from "../../UI/ErrorModal"
 
 function ExpenseFormOpen(props) {
 
   //hooks to control state: inputs is one object holding the entered form data
+  const [error, setError] = useState();
   const [inputs, setInputs] = useState({
       title: "",  
       amount: "", 
@@ -22,13 +24,20 @@ function ExpenseFormOpen(props) {
   //called when user clicks the submit button
   const submitHandler = (event) => {
     event.preventDefault(); //prevent lame default html form stuff
-    //console.log(inputs);
+    
+    //cancel this function if all fields are not filled out
+    if(!inputs.title || !inputs.amount || !inputs.date){
+      setError("All fields must be filled out.")  
+      return;
+    }
+
+    //clear inputs on submit
     setInputs({
       title: "",
       amount: "",
       date: ""
     });
-    props.onFormSubmit(inputs); //handler-function pointer pfrom parent. Now we pass the inputs up to the parent
+    props.onFormSubmit(inputs); //handler-function pointer from parent. Now we pass the inputs up to the parent
 
     //notify the parent FormContainer that we want isOpen to be false(closes form)
     props.onButtonClick(false)
@@ -39,9 +48,14 @@ function ExpenseFormOpen(props) {
     props.onButtonClick(false)
   }
 
+  const exitModalHandler = () => {
+    setError();
+  }
+
   //<ExpenseForm /> component For user to add expenses
   return (
     <>
+    {error && <ErrorModal errorText={error} exitModal={exitModalHandler}/>} {/*renders if error is truthy(not null)*/}
     <h1 className="heading">Expenses</h1>
     <Card className="form-container">
       <form onSubmit={submitHandler} id="myForm">

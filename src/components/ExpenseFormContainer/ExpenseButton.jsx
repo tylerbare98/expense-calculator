@@ -1,3 +1,7 @@
+/*
+  Reusable button
+*/
+
 import "./ExpenseButton.css" 
 
 
