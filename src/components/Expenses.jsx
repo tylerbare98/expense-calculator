@@ -7,7 +7,7 @@ import {createExpense} from "./ExpenseItem"
 function Expenses(props) {
 
   //Hooks for state
-  const [year, setYear] = useState("2021");
+  const [year, setYear] = useState("2022");
 
   //updates the state of <Expense />
   function filterHandler(y) {

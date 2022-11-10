@@ -24,11 +24,8 @@ function ExpenseFormContainer(props) {
     }
 
     //Conditionally render either the closed form or the open form
-    if(isFormOpen){ 
-        return <ExpenseFormOpen onFormSubmit={submitHandler} name="test" onButtonClick={clickHandler} />
-    } else{ 
-        return <ExpenseFormClosed onButtonClick={clickHandler} />
-    }
+    return isFormOpen ? <ExpenseFormOpen onFormSubmit={submitHandler} name="test" onButtonClick={clickHandler} /> : 
+    <ExpenseFormClosed onButtonClick={clickHandler} />
   }
 
   export default ExpenseFormContainer;
