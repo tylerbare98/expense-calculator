@@ -3,7 +3,7 @@
     width: 50%;
     margin:auto auto 15px auto;
     padding: 10px;
-
+    min-width: 250px;
 }
 
 .form-section{
