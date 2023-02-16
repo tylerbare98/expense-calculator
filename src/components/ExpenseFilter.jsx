@@ -15,6 +15,7 @@ function ExpenseFilter(props) {
           <select name="Year" className="classic" 
                   defaultValue={props.defaultYear} //two way binding with parent
                   onChange={filterHandler}> {/*send selected year of filter to parent-component*/}
+            <option value="2023">2023</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>

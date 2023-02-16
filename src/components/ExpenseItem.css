@@ -4,11 +4,11 @@
     height: 87px;
     vertical-align: top;
 }
-.testing{
+.right-container{
     vertical-align: top;
 }
 
-#item{
+.middle-container{
     color: #fff;
     font-size: 20px;   
     font-weight:bolder;
@@ -16,6 +16,23 @@
     display: table-cell;
     padding-left: 15px;
 }
+@media (max-width: 800px) {
+    /* styles to apply when screen size is 800px or less */
+    .container {
+        flex-direction: column;
+    }
+    .left-container{
+        margin:auto;
+    }
+    .right-container{
+        text-align: center;
+    }
+    .middle-container {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+  }
 
 .cost{
     padding: 10px;
@@ -34,11 +51,9 @@
     padding: 15px 10px 10px 10px;
     overflow:hidden;
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;   
 }
-
-#left-container{
+.left-container{
     display:table;
     overflow:hidden;
 }

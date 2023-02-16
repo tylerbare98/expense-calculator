@@ -6,13 +6,13 @@ import Card from "./Card";
 function ExpenseItem(props) {
   return (
     <Card className="container">
-      <div id="left-container">
+      <div className="left-container">
         <div className="date-container">
           <DateBox day={props.day} month={props.month} year={props.year}/>
         </div>
-        <div id="item">{props.item}</div>
       </div>
-      <div className="testing">
+      <div className="middle-container">{props.item}</div>
+      <div className="right-container">
         <Card className="cost"> {props.cost}</Card>
       </div>  
     </Card>

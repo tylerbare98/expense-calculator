@@ -69,7 +69,7 @@ function ExpenseFormOpen(props) {
           </div>
           <div className="form-section">
             <label>Amount</label><br/>
-            <input className="form-inputBox" type="number" name="amount" 
+            <input className="form-inputBox" type="number" name="amount" min="0"
               value={inputs.amount} 
               onChange={changeHandler}/>
           </div>

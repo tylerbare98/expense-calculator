@@ -12,10 +12,26 @@
     overflow:hidden;
     font-weight: bold;
 }
+@media (max-width: 800px) {
+    /* styles to apply when screen size is 1100px or less */
+    .form-section {
+      display:block;
+      width:250px;
+      margin:auto;
+      text-align:center;
+      padding-bottom:15px;
+    }
+  }
 
 .form-row{
     padding:5px;
 }
+@media (max-width: 800px) {
+    /* styles to apply when screen size is 1100px or less */
+    .form-row {
+      padding:0px;
+    }
+  }
 
 .form-inputBox{
     border-radius: 10px;
