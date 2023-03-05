@@ -1,8 +1,10 @@
 import "./ExpenseFormClosed.css"
-import Card from "../Card";
-import ExpenseButton from "./ExpenseButton";
+import { Container, Paper, Button } from '@material-ui/core';
+import useStyles from '../MuiStyles'
+
 
 function ExpenseFormClosed(props) {
+  const classes = useStyles();
 
   //notify the parent FormContainer that we want isOpen to be true
   const clickHandler = () => {
@@ -11,14 +13,11 @@ function ExpenseFormClosed(props) {
 
   ///<ExpenseForm /> component For user to add expenses
   return (
-    <>
-    <h1 className="heading">Expenses</h1>
-    <Card className="formClosed-container">
-       <ExpenseButton className="form-button" buttonType="button" buttonText="Add New Expense" 
-                      onButtonClick={clickHandler}
-       />
-    </Card>
-    </>
+    <Container maxWidth="md" >
+      <Paper className={classes.paper + ' ' + classes.closedContainer}>
+       <Button variant="outlined" className={classes.button} color="primary" onClick={clickHandler}>Add Expense</Button>
+       </Paper>
+    </Container>
   )
 }
 

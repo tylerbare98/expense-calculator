@@ -2,11 +2,16 @@ import { useState } from 'react';
 import "./App.css"
 import ExpenseFormContainer from './ExpenseFormContainer/ExpenseFormContainer';
 import Expenses from './Expenses';
+import NavBar from './NavBar';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import {CssBaseline, Paper} from '@material-ui/core/';
+
 
 //this is the main App
 function App() {
 
-  //"use state" hook of an array to re render DOM when array of expenses changes
+  //"use state" hooks
+  const [darkMode, setDarkMode] = useState(true) 
   const [expenses, setData] = useState([]) 
   
   //this captures new expense data from the child component <ExpenseForm />
@@ -34,11 +39,23 @@ function App() {
       ])
   }
 
+  //creating theme for project
+  const theme = createTheme({
+    palette: {
+      type: darkMode?'dark':'light',
+      primary: {
+        main: '#64b5f6',
+      },
+    },
+  });
+
   return (
-    <>
-      <ExpenseFormContainer onFormSubmit={formSubmitHandler}/>
-      <Expenses array={expenses} />
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+        <NavBar setDarkMode={setDarkMode} darkMode={darkMode}/>
+        <ExpenseFormContainer onFormSubmit={formSubmitHandler}/>
+        <Expenses array={expenses} />
+    </ThemeProvider>
   );
 }
 

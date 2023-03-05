@@ -1,10 +1,16 @@
 import "./ExpenseFormOpen.css"
 import {useState} from 'react'
-import Card from "../Card";
+import { Container, Paper, Button, Grid, TextField } from '@material-ui/core';
 import ExpenseButton from "./ExpenseButton";
 import ErrorModal from "../../UI/ErrorModal"
+import useStyles from '../MuiStyles'
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function ExpenseFormOpen(props) {
+  const classes = useStyles();
 
   //hooks to control state: inputs is one object holding the entered form data
   const [error, setError] = useState();
@@ -56,8 +62,28 @@ function ExpenseFormOpen(props) {
   return (
     <>
     {error && <ErrorModal errorText={error} exitModal={exitModalHandler}/>} {/*renders if error is truthy(not null)*/}
-    <h1 className="heading">Expenses</h1>
-    <Card className="form-container">
+    <Container maxWidth="md" >
+      <Paper className={classes.paper + ' ' + classes.closedContainer}>
+      
+      <form onSubmit={submitHandler}>
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <TextField label="Title" fullWidth />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField label="Amount" type="number" step="0.01" fullWidth inputProps={{ min: 0, max: 999999.99, step: 0.01 }} />
+          </Grid>
+          <Grid item xs={6}>
+            
+          </Grid>
+          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <Button variant="outlined" style={{ marginRight: 10 }}>Cancel</Button>
+            <Button variant="contained" color="primary" type="submit">Add</Button>
+          </Grid>
+        </Grid>
+      </form>
+
+
       <form onSubmit={submitHandler} id="myForm">
         {/*Row1: Title and Amount*/}
         <div className="form-row">
@@ -91,7 +117,8 @@ function ExpenseFormOpen(props) {
           </div>
         </div>       
       </form> 
-    </Card>
+    </Paper>
+    </Container>
     </>
   )
 }
