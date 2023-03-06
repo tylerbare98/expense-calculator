@@ -1,21 +1,25 @@
-import "./ExpenseItem.css"
-import DateBox from "./DateBox"
-import Card from "./Card";
+import './ExpenseItem.css'
+import { Paper, Container, Grid, Typography } from '@material-ui/core';
 
 //This defined what an <ExpenseItem /> should look like. It uses another compennt <Card /> 
 function ExpenseItem(props) {
+  console.log(props)
   return (
-    <Card className="container">
-      <div className="left-container">
-        <div className="date-container">
-          <DateBox day={props.day} month={props.month} year={props.year}/>
-        </div>
-      </div>
-      <div className="middle-container">{props.item}</div>
-      <div className="right-container">
-        <Card className="cost"> {props.cost}</Card>
-      </div>  
-    </Card>
+    <Container>
+    <Paper className="container" elevation={3} >
+      <Grid container spacing={2} >
+        <Grid item xs={12} sm={4} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+          <Typography color="primary" variant="body1" >{props.date}</Typography>
+        </Grid>
+        <Grid item xs={12} sm={4} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <Typography color="primary" variant="body1" >{props.item}</Typography>
+        </Grid>
+        <Grid item xs={12} sm={4} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <Typography color="primary" variant="body1" >{props.cost}</Typography>
+        </Grid>
+      </Grid> 
+    </Paper>
+    </Container>
   )
 }
 
@@ -25,9 +29,7 @@ function createExpense(expense)
   return(
     <ExpenseItem 
       key={expense.key}
-      day={expense.day} 
-      month={expense.month} 
-      year={expense.year}
+      date={expense.date} 
       item={expense.item} 
       cost={expense.cost}    
     />

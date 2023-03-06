@@ -1,9 +1,11 @@
 import "./ExpenseFilter.css"
 import Typography from '@material-ui/core/Typography';
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import useStyles from './MuiStyles'
 
 
 function ExpenseFilter(props) {
+  const classes = useStyles();
 
   //handlers
   const filterHandler = e => {

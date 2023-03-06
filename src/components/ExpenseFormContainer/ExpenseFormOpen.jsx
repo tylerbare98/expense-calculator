@@ -6,7 +6,9 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
 
 function ExpenseFormOpen(props) {
   const classes = useStyles();
@@ -14,7 +16,6 @@ function ExpenseFormOpen(props) {
   //hooks to control state: inputs is one object holding the entered form data
   const [titleError, setTitleError] = useState();
   const [amountError, setAmountError] = useState();
-  const [dateError, setdateError] = useState(false);
   const [date, setDate] = useState(dayjs());
   const [inputs, setInputs] = useState({
       title: "",  
@@ -32,12 +33,9 @@ function ExpenseFormOpen(props) {
     setInputs(values => ({...values, ["amount"]: event.target.value}))
   }
 
-
   //called when user clicks the submit button
   const submitHandler = (event) => {
     event.preventDefault(); //prevent lame default html form stuff
-    console.log(inputs)
-    console.log(date)
 
     //cancel this function if all fields are not filled out
     let returnFlag = false
@@ -57,7 +55,8 @@ function ExpenseFormOpen(props) {
       title: "",
       amount: ""
     });
-    props.onFormSubmit(inputs); //handler-function pointer from parent. Now we pass the inputs up to the parent
+
+    props.onFormSubmit(inputs, date); //handler-function pointer from parent. Now we pass the inputs up to the parent
 
     //notify the parent FormContainer that we want isOpen to be false(closes form)
     props.onButtonClick(false)
@@ -70,25 +69,23 @@ function ExpenseFormOpen(props) {
 
   //<ExpenseForm /> component For user to add expenses
   return (
-    <>
-    
-    <Container maxWidth="md" >
+     <Container maxWidth="md" >
       <Paper className={classes.paper + ' ' + classes.closedContainer}>
       
       <form noValidate onSubmit={submitHandler}>
         <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <TextField label="Expense Name" fullWidth name="title" onChange={titleChangeHandler} error={titleError}/>
+          <Grid item xs={12} sm={6}>
+            <TextField color="primary" label="Expense Name" fullWidth name="title" onChange={titleChangeHandler} error={titleError}/>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField label="Expense Amount" type="number" name="amount" onChange={amountChangeHandler} error={amountError}
               fullWidth inputProps={{ min: 0, max: 999999.99, }}
              />
           </Grid>
-          <Grid item xs={6}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DatePicker']}>   
-                <DatePicker
+          <Grid item xs={12} sm={6}>
+            <LocalizationProvider dateAdapter={AdapterDayjs} >
+              <DemoContainer components={['DatePicker']} >   
+                <DatePicker 
                   onChange={(date) => setDate(dayjs(date))}
                   value={date}
                   label="Date of Expense"
@@ -96,15 +93,16 @@ function ExpenseFormOpen(props) {
               </DemoContainer>
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-            <Button variant="outlined" style={{ marginRight: 10 }} onClick={clickHandler}>Cancel</Button>
-            <Button variant="contained" color="primary" type="submit" onClick={submitHandler}>Add</Button>
+          <Grid item xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+            <Button variant="outlined" color="primary" style={{ marginRight: 10 }} 
+              startIcon={<DeleteIcon />} onClick={clickHandler}>Cancel</Button>
+            <Button variant="contained" color="primary" type="submit" 
+              endIcon={<SendIcon />} onClick={submitHandler}>Add</Button>
           </Grid>
         </Grid>
       </form>
     </Paper>
     </Container>
-    </>
   )
 }
 

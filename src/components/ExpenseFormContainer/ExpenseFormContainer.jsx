@@ -14,8 +14,8 @@ function ExpenseFormContainer(props) {
     const [isFormOpen, setisFormOpen] = useState();
 
     //d is the JSON object of one expense
-    const submitHandler = d => {
-        props.onFormSubmit(d);
+    const submitHandler = (inputs, date) => {
+        props.onFormSubmit(inputs, date);
     }
 
     //The button being clicked will send info up the chain to here

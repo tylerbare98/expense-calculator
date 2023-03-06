@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import ExpenseFilter from './ExpenseFilter';
-import { Container, Paper } from '@material-ui/core';
+import { Container, Paper, Typography } from '@material-ui/core';
 import {createExpense} from "./ExpenseItem"
 import useStyles from './MuiStyles'
 
@@ -18,14 +18,14 @@ function Expenses(props) {
 
   //filtered array based on state variable year
   let filteredArray = props.array.filter(a => {
-    return a.year == year;
+    return a.date.split('/')[2] == year;
   })
 
  return (
       <Container maxWidth="md" >
         <Paper className={classes.paper + ' ' + classes.expensesContainer}>
-        <ExpenseFilter defaultYear={year} onfilterChange={filterHandler}/>
-        {filteredArray.map(createExpense)} {/*This is called Array.length times. each time it will return a new <ExpenseItem /> component. */}
+        <ExpenseFilter defaultYear={year} onfilterChange={filterHandler}/>    
+        {filteredArray.map(createExpense)} 
         </Paper>
       </Container>
  );
