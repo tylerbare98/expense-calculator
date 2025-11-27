@@ -24,11 +24,11 @@ function ExpenseFilter(props) {
             value={props.defaultYear}
             onChange={filterHandler} 
           >
-            <MenuItem value="2023">2029</MenuItem>
-            <MenuItem value="2022">2028</MenuItem>
-            <MenuItem value="2021">2027</MenuItem>
-            <MenuItem value="2020">2026</MenuItem>
-            <MenuItem value="2019">2025</MenuItem>
+            <MenuItem value="2029">2029</MenuItem>
+            <MenuItem value="2028">2028</MenuItem>
+            <MenuItem value="2027">2027</MenuItem>
+            <MenuItem value="2026">2026</MenuItem>
+            <MenuItem value="2025">2025</MenuItem>
           </Select>
         </FormControl>
       </div>
