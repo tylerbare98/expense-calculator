@@ -9,7 +9,7 @@ function Expenses(props) {
   const classes = useStyles();
 
   //Hooks for state
-  const [year, setYear] = useState("2023");
+  const [year, setYear] = useState("2025");
 
   //updates the state of <Expense />
   function filterHandler(y) {
