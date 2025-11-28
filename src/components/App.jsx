@@ -8,7 +8,7 @@ import {CssBaseline, Paper} from '@material-ui/core/';
 
 
 //this is the main App
-function App() {
+function App() { 
 
   //"use state" hooks
   const [darkMode, setDarkMode] = useState(true) 
